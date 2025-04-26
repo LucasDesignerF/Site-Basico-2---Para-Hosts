@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Fourward Hosting - Bare Metal Servers. Servidores dedicados de alta performance para jogos e aplicações pela Rede Gamer.">
+  <meta property="og:title" content="Fourward Hosting - Bare Metal Servers">
+  <meta property="og:description" content="Servidores bare metal com hardware dedicado, desempenho máximo e suporte 24/7 pela Rede Gamer.">
+  <meta property="og:image" content="https://i.imgur.com/trDOy6W.png">
+  <meta property="og:url" content="https://fourwardhosting.com/bare-metal.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://i.imgur.com/trDOy6W.png">
+  <title>Fourward Hosting - Bare Metal Servers</title>
+  <link rel="icon" href="https://i.imgur.com/4jTPvEn.png" type="image/png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    .navbar-hidden {
+      transform: translateY(-100%);
+      transition: transform 0.3s ease-in-out;
+    }
+    .navbar-visible {
+      transform: translateY(0);
+      transition: transform 0.3s ease-in-out;
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+    .card-hover:hover {
+      transform: scale(1.05);
+      transition: transform 0.3s ease;
+    }
+    .table-hover:hover {
+      background-color: #2d2d2d;
+      transition: background-color 0.3s ease;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-white">
+  <!-- Navbar -->
+  <nav id="navbar" class="fixed top-0 left-0 w-full bg-gray-900 bg-opacity-95 z-50 navbar-visible shadow-lg">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="index.html" class="flex items-center space-x-3">
+        <img src="https://i.imgur.com/4jTPvEn.png" alt="Fourward Hosting Logo" class="h-12">
+        <span class="text-2xl font-extrabold text-red-500">Fourward</span>
+      </a>
+      <div class="flex space-x-8 text-lg">
+        <a href="index.html#home" class="hover:text-red-500 transition flex items-center"><i class="fas fa-home mr-2"></i>Início</a>
+        <a href="index.html#features" class="hover:text-red-500 transition flex items-center"><i class="fas fa-cogs mr-2"></i>Recursos</a>
+        <a href="index.html#why-us" class="hover:text-red-500 transition flex items-center"><i class="fas fa-star mr-2"></i>Por que nós?</a>
+        <a href="index.html#contact" class="hover:text-red-500 transition flex items-center"><i class="fas fa-envelope mr-2"></i>Contato</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="h-[60vh] flex items-center justify-center bg-gradient-to-r from-gray-900 to-red-900">
+    <div class="text-center px-6">
+      <h1 class="text-4xl md:text-6xl font-extrabold mb-4 tracking-tight text-cyan-300">
+        Bare Metal Servers
+      </h1>
+      <p class="text-lg md:text-xl mb-8 text-red-500 font-semibold">Hardware dedicado para desempenho absoluto</p>
+      <a href="#plans" class="bg-red-500 text-white px-8 py-3 rounded-lg font-bold hover:bg-cyan-300 hover:text-gray-900 transition">
+        <i class="fas fa-rocket mr-2"></i> Ver Planos
+      </a>
+    </div>
+  </section>
+
+  <!-- Bare Metal Features Section -->
+  <section id="features" class="py-20 bg-gray-900">
+    <div class="container mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-16 text-cyan-300"><i class="fas fa-server mr-3"></i> Por Que Escolher Bare Metal?</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-gray-800 p-6 rounded-xl card-hover">
+          <i class="fas fa-tachometer-alt text-3xl text-red-500 mb-4"></i>
+          <h3 class="text-xl font-semibold mb-3 text-cyan-300">Desempenho Total</h3>
+          <p class="text-gray-400">Servidores dedicados sem virtualização para máxima potência.</p>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-xl card-hover">
+          <i class="fas fa-cogs text-3xl text-red-500 mb-4"></i>
+          <h3 class="text-xl font-semibold mb-3 text-cyan-300">Hardware Premium</h3>
+          <p class="text-gray-400">CPUs Ryzen ou Xeon de última geração com RAM ECC.</p>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-xl card-hover">
+          <i class="fas fa-hdd text-3xl text-red-500 mb-4"></i>
+          <h3 class="text-xl font-semibold mb-3 text-cyan-300">Armazenamento NVMe</h3>
+          <p class="text-gray-400">Discos NVMe de alta velocidade para operações rápidas.</p>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-xl card-hover">
+          <i class="fas fa-shield-alt text-3xl text-red-500 mb-4"></i>
+          <h3 class="text-xl font-semibold mb-3 text-cyan-300">Segurança Avançada</h3>
+          <p class="text-gray-400">Proteção DDoS premium para servidores ininterruptos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Plans Section (Table) -->
+  <section id="plans" class="py-20 bg-gradient-to-b from-red-900 to-gray-900">
+    <div class="container mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-16 text-cyan-300"><i class="fas fa-tags mr-3"></i> Planos Bare Metal</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse bg-gray-800 rounded-xl">
+          <thead>
+            <tr class="bg-red-900 text-cyan-300">
+              <th class="p-4 font-semibold">Plano</th>
+              <th class="p-4 font-semibold">CPU</th>
+              <th class="p-4 font-semibold">RAM</th>
+              <th class="p-4 font-semibold">Armazenamento</th>
+              <th class="p-4 font-semibold">Preço</th>
+              <th class="p-4 font-semibold">Ação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-cyan-300/30 table-hover">
+              <td class="p-4 font-semibold text-red-500">Bare Metal Básico</td>
+              <td class="p-4">Ryzen 7 5800X (8 Cores)</td>
+              <td class="p-4">32 GB DDR4 ECC</td>
+              <td class="p-4">500 GB NVMe</td>
+              <td class="p-4 text-cyan-300">R$ 499,90/mês</td>
+              <td class="p-4">
+                <a href="#" class="bg-red-500 text-white px-4 py-2 rounded-lg font-semibold hover:bg-cyan-300 hover:text-gray-900 transition">
+                  <i class="fas fa-shopping-cart mr-2"></i> Contratar
+                </a>
+              </td>
+            </tr>
+            <tr class="border-b border-cyan-300/30 table-hover relative">
+              <td class="p-4 font-semibold text-red-500">Bare Metal Pro <span class="absolute top-2 right-2 bg-red-500 text-white text-xs px-2 py-1 rounded">Popular</span></td>
+              <td class="p-4">Ryzen 9 5900X (12 Cores)</td>
+              <td class="p-4">64 GB DDR4 ECC</td>
+              <td class="p-4">1 TB NVMe</td>
+              <td class="p-4 text-cyan-300">R$ 799,90/mês</td>
+              <td class="p-4">
+                <a href="#" class="bg-red-500 text-white px-4 py-2 rounded-lg font-semibold hover:bg-cyan-300 hover:text-gray-900 transition">
+                  <i class="fas fa-shopping-cart mr-2"></i> Contratar
+                </a>
+              </td>
+            </tr>
+            <tr class="table-hover">
+              <td class="p-4 font-semibold text-red-500">Bare Metal Elite</td>
+              <td class="p-4">Xeon E-2288G (8 Cores)</td>
+              <td class="p-4">128 GB DDR4 ECC</td>
+              <td class="p-4">2 TB NVMe</td>
+              <td class="p-4 text-cyan-300">R$ 1199,90/mês</td>
+              <td class="p-4">
+                <a href="#" class="bg-red-500 text-white px-4 py-2 rounded-lg font-semibold hover:bg-cyan-300 hover:text-gray-900 transition">
+                  <i class="fas fa-shopping-cart mr-2"></i> Contratar
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section class="py-20 bg-gray-900">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="text-4xl font-bold mb-6 text-cyan-300"><i class="fas fa-fire mr-3"></i> Potência sem Limites</h2>
+      <p class="text-lg text-gray-400 mb-8 max-w-2xl mx-auto">Escolha servidores bare metal para desempenho máximo e controle total com a Fourward Hosting.</p>
+      <a href="https://discord.gg/CDDwY4HejM" class="bg-cyan-300 text-gray-900 px-8 py-3 rounded-lg font-bold hover:bg-red-500 hover:text-white transition">
+        <i class="fab fa-discord mr-2"></i> Fale Conosco no Discord
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact" class="bg-gray-900 py-12">
+    <div class="container mx-auto px-6 text-center">
+      <img src="https://i.imgur.com/4jTPvEn.png" alt="Fourward Hosting Logo" class="h-20 mx-auto mb-6">
+      <h3 class="text-2xl font-bold text-cyan-300 mb-4">Fourward Hosting</h3>
+      <p class="text-gray-400 mb-6">O Avanço em Hospedagens - Criado por Rede Gamer e Lucas Dev</p>
+      <div class="flex justify-center space-x-8 mb-8">
+        <a href="https://discord.gg/CDDwY4HejM" class="text-3xl hover:text-red-500 transition"><i class="fab fa-discord"></i></a>
+        <a href="#" class="text-3xl hover:text-red-500 transition"><i class="fas fa-envelope"></i></a>
+      </div>
+      <div class="flex justify-center space-x-6 mb-6 text-sm">
+        <a href="#" class="hover:text-cyan-300 transition">Termos de Serviço</a>
+        <a href="#" class="hover:text-cyan-300 transition">Política de Privacidade</a>
+        <a href="#" class="hover:text-cyan-300 transition">Suporte</a>
+      </div>
+      <p class="text-gray-500 text-sm">© 2025 Fourward Hosting. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript for Navbar Scroll Behavior -->
+  <script>
+    let lastScrollTop = 0;
+    const navbar = document.getElementById('navbar');
+
+    window.addEventListener('scroll', () => {
+      let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      if (scrollTop > lastScrollTop) {
+        navbar.classList.remove('navbar-visible');
+        navbar.classList.add('navbar-hidden');
+      } else {
+        navbar.classList.remove('navbar-hidden');
+        navbar.classList.add('navbar-visible');
+      }
+      lastScrollTop = scrollTop;
+    });
+  </script>
+</body>
+</html>
