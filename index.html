@@ -68,6 +68,11 @@
     .hero-bg {
       background: linear-gradient(to bottom, rgba(107, 33, 168, 0.8), rgba(76, 29, 149, 0.8)), url('https://zeittec.com.br/wp-content/uploads/2020/03/construcao-de-data-center-seguros.jpg') no-repeat center/cover;
     }
+    .card-img {
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px 8px 0 0;
+    }
   </style>
 </head>
 <body>
@@ -103,33 +108,54 @@
     <div class="container mx-auto px-4">
       <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">Nossos Produtos</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <a href="mta.html" class="card bg-white rounded-lg shadow-lg p-6 text-center">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">MTA Hosting</h3>
-          <p class="text-gray-600">Servidores otimizados para Multi Theft Auto.</p>
+        <a href="mta.html" class="card bg-white rounded-lg shadow-lg text-center overflow-hidden">
+          <img src="https://hostini.com.br/templates/lagom2/assets/img/page-manager/banner%20mta1.png" alt="MTA Hosting" class="card-img w-full">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">MTA Hosting</h3>
+            <p class="text-gray-600">Servidores otimizados para Multi Theft Auto.</p>
+          </div>
         </a>
-        <a href="sa-mp.html" class="card bg-white rounded-lg shadow-lg p-6 text-center">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">SA-MP Hosting</h3>
-          <p class="text-gray-600">Hospedagem para San Andreas Multiplayer.</p>
+        <a href="sa-mp.html" class="card bg-white rounded-lg shadow-lg text-center overflow-hidden">
+          <img src="https://hostini.io/templates/lagom2/assets/img/page-manager/samp3.png" alt="SA-MP Hosting" class="card-img w-full">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">SA-MP Hosting</h3>
+            <p class="text-gray-600">Hospedagem para San Andreas Multiplayer.</p>
+          </div>
         </a>
-        <a href="minecraft.html" class="card bg-white rounded-lg shadow-lg p-6 text-center">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Minecraft Hosting</h3>
-          <p class="text-gray-600">Servidores para Minecraft com mods e plugins.</p>
+        <a href="minecraft.html" class="card bg-white rounded-lg shadow-lg text-center overflow-hidden">
+          <img src="https://hostini.io/templates/lagom2/assets/img/page-manager/banner_bg-game-minecraft-min.png" alt="Minecraft Hosting" class="card-img w-full">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">Minecraft Hosting</h3>
+            <p class="text-gray-600">Servidores para Minecraft com mods e plugins.</p>
+          </div>
         </a>
-        <a href="ryzen9.html" class="card bg-white rounded-lg shadow-lg p-6 text-center">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">VPS Ryzen9 BR</h3>
-          <p class="text-gray-600">VPS de alta performance no Brasil.</p>
+        <a href="ryzen9.html" class="card bg-white rounded-lg shadow-lg text-center overflow-hidden">
+          <img src="https://cloudzy.com/wp-content/uploads/featured_image_29242.webp" alt="VPS Ryzen9 BR" class="card-img w-full">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">VPS Ryzen9 BR</h3>
+            <p class="text-gray-600">VPS de alta performance no Brasil.</p>
+          </div>
         </a>
-        <a href="ryzen7.html" class="card bg-white rounded-lg shadow-lg p-6 text-center">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">VPS Ryzen7 BR</h3>
-          <p class="text-gray-600">VPS confiáveis com Ryzen 7 no Brasil.</p>
+        <a href="ryzen7.html" class="card bg-white rounded-lg shadow-lg text-center overflow-hidden">
+          <img src="https://cloudzy.com/wp-content/uploads/featured_image_29242.webp" alt="VPS Ryzen7 BR" class="card-img w-full">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">VPS Ryzen7 BR</h3>
+            <p class="text-gray-600">VPS confiáveis com Ryzen 7 no Brasil.</p>
+          </div>
         </a>
-        <a href="xeon.html" class="card bg-white rounded-lg shadow-lg p-6 text-center">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">VPS Xeon 2660v2 BR</h3>
-          <p class="text-gray-600">VPS para workloads intensos no Brasil.</p>
+        <a href="xeon.html" class="card bg-white rounded-lg shadow-lg text-center overflow-hidden">
+          <img src="https://anthareshost.com/images/intel.png" alt="VPS Xeon 2660v2 BR" class="card-img w-full">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">VPS Xeon 2660v2 BR</h3>
+            <p class="text-gray-600">VPS para workloads intensos no Brasil.</p>
+          </div>
         </a>
-        <a href="dedicated.html" class="card bg-white rounded-lg shadow-lg p-6 text-center">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Servidores Dedicados</h3>
-          <p class="text-gray-600">Bare Metal nos EUA, CA, BR e EU.</p>
+        <a href="dedicated.html" class="card bg-white rounded-lg shadow-lg text-center overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1506619216599-9d16d0903dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Servidores Dedicados" class="card-img w-full">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">Servidores Dedicados</h3>
+            <p class="text-gray-600">Bare Metal nos EUA, CA, BR e EU.</p>
+          </div>
         </a>
       </div>
     </div>
@@ -148,7 +174,7 @@
   <footer class="bg-purple-800 text-white py-8">
     <div class="container mx-auto px-4 text-center">
       <p class="mb-2">© 2025 Fourward Hosting. Todos os direitos reservados.</p>
-      <p><a href="https://fourward-hosting.pages.dev" class="underline hover:text-light-blue">fourward-hosting.pages.dev</a></p>
+      <p><a href="https://被迫四处游荡的苦难之主fourward-hosting.pages.dev" class="underline hover:text-light-blue">fourward-hosting.pages.dev</a></p>
     </div>
   </footer>
 
