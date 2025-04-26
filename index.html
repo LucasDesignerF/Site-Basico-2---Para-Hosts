@@ -19,162 +19,365 @@
   <meta name="twitter:image" content="https://i.imgur.com/Xr7Y2S3.png">
   <link rel="icon" href="https://i.imgur.com/RiuNbm9.png" type="image/png">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     :root {
       --purple-primary: #6b21a8;
       --purple-dark: #4c1d95;
       --light-blue: #38bdf8;
       --reddish-purple: #c026d3;
+      --gray-bg: #f8fafc;
     }
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #f9fafb;
+      background-color: var(--gray-bg);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    .navbar {
+      background: linear-gradient(90deg, var(--purple-dark), var(--purple-primary));
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      transition: background 0.3s ease;
     }
     .nav-link {
-      position: relative;
+      color: white;
+      font-weight: 500;
       transition: color 0.3s ease;
     }
     .nav-link:hover {
       color: var(--light-blue);
     }
-    .nav-link::after {
+    .dropdown:hover .dropdown-menu {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .dropdown-menu {
+      display: none;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      background: white;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+      border-radius: 10px;
+      min-width: 240px;
+      padding: 10px 0;
+    }
+    .dropdown-item {
+      color: #1f2937;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    .dropdown-item:hover {
+      background: var(--light-blue);
+      color: white;
+    }
+    .dropdown-item i {
+      margin-right: 12px;
+      width: 20px;
+      text-align: center;
+    }
+    .hero-bg {
+      position: relative;
+      background: linear-gradient(to bottom, rgba(107, 33, 168, 0.9), rgba(76, 29, 149, 0.6)), url('https://zeittec.com.br/wp-content/uploads/2020/03/construcao-de-data-center-seguros.jpg') no-repeat center/cover;
+      background-attachment: fixed;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+    }
+    .hero-bg::before {
       content: '';
       position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: -2px;
+      top: 0;
       left: 0;
-      background-color: var(--light-blue);
-      transition: width 0.3s ease;
-    }
-    .nav-link:hover::after {
       width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
     }
     .card {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      border: 1px solid #e5e7eb;
+      position: relative;
     }
     .card:hover {
       transform: translateY(-10px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    }
-    .btn-primary {
-      background-color: var(--purple-primary);
-      color: white;
-      transition: background-color 0.3s ease;
-    }
-    .btn-primary:hover {
-      background-color: var(--purple-dark);
-    }
-    .hero-bg {
-      background: linear-gradient(to bottom, rgba(107, 33, 168, 0.8), rgba(76, 29, 149, 0.8)), url('https://zeittec.com.br/wp-content/uploads/2020/03/construcao-de-data-center-seguros.jpg') no-repeat center/cover;
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
     }
     .card-img {
-      height: 150px;
+      height: 180px;
       object-fit: cover;
-      border-radius: 8px 8px 0 0;
+      width: 100%;
+      transition: transform 0.4s ease;
+    }
+    .card:hover .card-img {
+      transform: scale(1.05);
+    }
+    .btn-primary {
+      background: var(--purple-primary);
+      color: white;
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+    .btn-primary:hover {
+      background: var(--purple-dark);
+      transform: translateY(-3px);
+    }
+    .btn-secondary {
+      background: var(--light-blue);
+      color: white;
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+    .btn-secondary:hover {
+      background: #2b6cb0;
+      transform: translateY(-3px);
+    }
+    .feature-card {
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+    .testimonial-card {
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+    .footer-link:hover {
+      color: var(--light-blue);
+    }
+    .animate-fade-in {
+      animation: fadeIn 1s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
   <!-- Header -->
-  <header class="bg-gradient-to-r from-purple-800 to-purple-600 text-white py-4 sticky top-0 z-50 shadow-lg">
-    <div class="container mx-auto flex justify-between items-center px-4">
+  <header class="navbar text-white py-5 sticky top-0 z-50">
+    <div class="container mx-auto flex justify-between items-center px-6">
       <div class="flex items-center">
-        <img src="https://i.imgur.com/RiuNbm9.png" alt="Fourward Hosting Logo" class="h-12 w-12 mr-3">
-        <h1 class="text-2xl font-bold">Fourward Hosting</h1>
+        <img src="https://i.imgur.com/RiuNbm9.png" alt="Fourward Hosting Logo" class="h-16 w-16 mr-4">
+        <h1 class="text-3xl font-extrabold tracking-tight">Fourward Hosting</h1>
       </div>
       <nav>
-        <ul class="flex space-x-6">
-          <li><a href="#home" class="nav-link">Início</a></li>
-          <li><a href="#products" class="nav-link">Produtos</a></li>
-          <li><a href="#contact" class="nav-link">Contato</a></li>
-          <li><a href="terms.html" class="nav-link">Termos</a></li>
+        <ul class="flex space-x-10 items-center">
+          <li><a href="#home" class="nav-link text-lg">Início</a></li>
+          <li class="relative dropdown">
+            <a href="#products" class="nav-link text-lg flex items-center">
+              Produtos <i class="fas fa-chevron-down ml-2"></i>
+            </a>
+            <ul class="dropdown-menu absolute top-full left-0 mt-3">
+              <li><a href="mta.html" class="dropdown-item"><i class="fas fa-gamepad"></i> MTA Hosting</a></li>
+              <li><a href="sa-mp.html" class="dropdown-item"><i class="fas fa-gamepad"></i> SA-MP Hosting</a></li>
+              <li><a href="minecraft.html" class="dropdown-item"><i class="fas fa-cube"></i> Minecraft Hosting</a></li>
+              <li><a href="ryzen9.html" class="dropdown-item"><i class="fas fa-server"></i> VPS Ryzen9 BR</a></li>
+              <li><a href="ryzen7.html" class="dropdown-item"><i class="fas fa-server"></i> VPS Ryzen7 BR</a></li>
+              <li><a href="xeon.html" class="dropdown-item"><i class="fas fa-server"></i> VPS Xeon 2660v2 BR</a></li>
+              <li><a href="dedicated.html" class="dropdown-item"><i class="fas fa-database"></i> Servidores Dedicados</a></li>
+            </ul>
+          </li>
+          <li><a href="#contact" class="nav-link text-lg">Contato</a></li>
+          <li><a href="terms.html" class="nav-link text-lg">Termos</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <!-- Hero Section -->
-  <section id="home" class="hero-bg py-32 text-white text-center">
-    <div class="container mx-auto px-4">
-      <h2 class="text-5xl font-bold mb-4">Fourward Hosting - O Avanço em Hospedagens</h2>
-      <p class="text-xl mb-8">Hospedagem de alta performance para jogos e servidores VPS no Brasil e no mundo.</p>
-      <a href="#products" class="btn-primary py-3 px-8 rounded-lg text-lg">Conheça Nossos Planos</a>
+  <section id="home" class="hero-bg animate-fade-in">
+    <div class="hero-content container mx-auto px-6 text-center">
+      <h2 class="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight">Fourward Hosting</h2>
+      <p class="text-2xl md:text-3xl text-gray-200 mb-10 max-w-3xl mx-auto">Hospedagem de alta performance para jogos e servidores VPS no Brasil e no mundo.</p>
+      <div class="flex justify-center space-x-6">
+        <a href="#products" class="btn-primary text-xl">Conheça Nossos Planos</a>
+        <a href="#contact" class="btn-secondary text-xl">Fale Conosco</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="py-24 bg-gray-50">
+    <div class="container mx-auto px-6">
+      <h2 class="text-4xl md:text-5xl font-bold text-center text-gray-800 mb-16 animate-fade-in">Por que Escolher a Fourward?</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="feature-card text-center animate-fade-in">
+          <i class="fas fa-rocket text-4xl text-purple-600 mb-4"></i>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3">Alta Performance</h3>
+          <p class="text-gray-600">Servidores otimizados com hardware de ponta para máxima velocidade.</p>
+        </div>
+        <div class="feature-card text-center animate-fade-in" style="animation-delay: 0.2s;">
+          <i class="fas fa-shield-alt text-4xl text-purple-600 mb-4"></i>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3">Segurança Avançada</h3>
+          <p class="text-gray-600">Proteção DDoS e backups automáticos para sua tranquilidade.</p>
+        </div>
+        <div class="feature-card text-center animate-fade-in" style="animation-delay: 0.4s;">
+          <i class="fas fa-headset text-4xl text-purple-600 mb-4"></i>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3">Suporte 24/7</h3>
+          <p class="text-gray-600">Equipe especializada pronta para ajudar a qualquer momento.</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Products Section -->
-  <section id="products" class="py-20 bg-gray-100">
-    <div class="container mx-auto px-4">
-      <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">Nossos Produtos</h2>
+  <section id="products" class="py-24 bg-white">
+    <div class="container mx-auto px-6">
+      <h2 class="text-4xl md:text-5xl font-bold text-center text-gray-800 mb-16 animate-fade-in">Nossos Produtos</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <a href="mta.html" class="card bg-white rounded-lg shadow-lg text-center overflow-hidden">
-          <img src="https://hostini.com.br/templates/lagom2/assets/img/page-manager/banner%20mta1.png" alt="MTA Hosting" class="card-img w-full">
+        <a href="mta.html" class="card animate-fade-in">
+          <img src="https://hostini.com.br/templates/lagom2/assets/img/page-manager/banner%20mta1.png" alt="MTA Hosting" class="card-img">
           <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">MTA Hosting</h3>
-            <p class="text-gray-600">Servidores otimizados para Multi Theft Auto.</p>
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">MTA Hosting</h3>
+            <p class="text-gray-600 mb-4">Servidores otimizados para Multi Theft Auto com baixa latência.</p>
+            <span class="text-purple-600 font-medium">Saiba Mais <i class="fas fa-arrow-right ml-2"></i></span>
           </div>
         </a>
-        <a href="sa-mp.html" class="card bg-white rounded-lg shadow-lg text-center overflow-hidden">
-          <img src="https://hostini.io/templates/lagom2/assets/img/page-manager/samp3.png" alt="SA-MP Hosting" class="card-img w-full">
+        <a href="sa-mp.html" class="card animate-fade-in" style="animation-delay: 0.1s;">
+          <img src="https://hostini.io/templates/lagom2/assets/img/page-manager/samp3.png" alt="SA-MP Hosting" class="card-img">
           <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">SA-MP Hosting</h3>
-            <p class="text-gray-600">Hospedagem para San Andreas Multiplayer.</p>
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">SA-MP Hosting</h3>
+            <p class="text-gray-600 mb-4">Hospedagem dedicada para San Andreas Multiplayer.</p>
+            <span class="text-purple-600 font-medium">Saiba Mais <i class="fas fa-arrow-right ml-2"></i></span>
           </div>
         </a>
-        <a href="minecraft.html" class="card bg-white rounded-lg shadow-lg text-center overflow-hidden">
-          <img src="https://hostini.io/templates/lagom2/assets/img/page-manager/banner_bg-game-minecraft-min.png" alt="Minecraft Hosting" class="card-img w-full">
+        <a href="minecraft.html" class="card animate-fade-in" style="animation-delay: 0.2s;">
+          <img src="https://hostini.io/templates/lagom2/assets/img/page-manager/banner_bg-game-minecraft-min.png" alt="Minecraft Hosting" class="card-img">
           <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">Minecraft Hosting</h3>
-            <p class="text-gray-600">Servidores para Minecraft com mods e plugins.</p>
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">Minecraft Hosting</h3>
+            <p class="text-gray-600 mb-4">Servidores para Minecraft com suporte a mods e plugins.</p>
+            <span class="text-purple-600 font-medium">Saiba Mais <i class="fas fa-arrow-right ml-2"></i></span>
           </div>
         </a>
-        <a href="ryzen9.html" class="card bg-white rounded-lg shadow-lg text-center overflow-hidden">
-          <img src="https://cloudzy.com/wp-content/uploads/featured_image_29242.webp" alt="VPS Ryzen9 BR" class="card-img w-full">
+        <a href="ryzen9.html" class="card animate-fade-in" style="animation-delay: 0.3s;">
+          <img src="https://cloudzy.com/wp-content/uploads/featured_image_29242.webp" alt="VPS Ryzen9 BR" class="card-img">
           <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">VPS Ryzen9 BR</h3>
-            <p class="text-gray-600">VPS de alta performance no Brasil.</p>
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">VPS Ryzen9 BR</h3>
+            <p class="text-gray-600 mb-4">VPS de alta performance com Ryzen 9 no Brasil.</p>
+            <span class="text-purple-600 font-medium">Saiba Mais <i class="fas fa-arrow-right ml-2"></i></span>
           </div>
         </a>
-        <a href="ryzen7.html" class="card bg-white rounded-lg shadow-lg text-center overflow-hidden">
-          <img src="https://cloudzy.com/wp-content/uploads/featured_image_29242.webp" alt="VPS Ryzen7 BR" class="card-img w-full">
+        <a href="ryzen7.html" class="card animate-fade-in" style="animation-delay: 0.4s;">
+          <img src="https://cloudzy.com/wp-content/uploads/featured_image_29242.webp" alt="VPS Ryzen7 BR" class="card-img">
           <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">VPS Ryzen7 BR</h3>
-            <p class="text-gray-600">VPS confiáveis com Ryzen 7 no Brasil.</p>
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">VPS Ryzen7 BR</h3>
+            <p class="text-gray-600 mb-4">VPS confiáveis com Ryzen 7 no Brasil.</p>
+            <span class="text-purple-600 font-medium">Saiba Mais <i class="fas fa-arrow-right ml-2"></i></span>
           </div>
         </a>
-        <a href="xeon.html" class="card bg-white rounded-lg shadow-lg text-center overflow-hidden">
-          <img src="https://anthareshost.com/images/intel.png" alt="VPS Xeon 2660v2 BR" class="card-img w-full">
+        <a href="xeon.html" class="card animate-fade-in" style="animation-delay: 0.5s;">
+          <img src="https://anthareshost.com/images/intel.png" alt="VPS Xeon 2660v2 BR" class="card-img">
           <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">VPS Xeon 2660v2 BR</h3>
-            <p class="text-gray-600">VPS para workloads intensos no Brasil.</p>
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">VPS Xeon 2660v2 BR</h3>
+            <p class="text-gray-600 mb-4">VPS para workloads intensos no Brasil.</p>
+            <span class="text-purple-600 font-medium">Saiba Mais <i class="fas fa-arrow-right ml-2"></i></span>
           </div>
         </a>
-        <a href="dedicated.html" class="card bg-white rounded-lg shadow-lg text-center overflow-hidden">
-          <img src="https://kinsta.com/pt/wp-content/uploads/sites/3/2019/01/kinsta-servidos-dedicados-pt.png" alt="Servidores Dedicados" class="card-img w-full">
+        <a href="dedicated.html" class="card animate-fade-in" style="animation-delay: 0.6s;">
+          <img src="https://kinsta.com/pt/wp-content/uploads/sites/3/2019/01/kinsta-servidos-dedicados-pt.png" alt="Servidores Dedicados" class="card-img">
           <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">Servidores Dedicados</h3>
-            <p class="text-gray-600">Bare Metal nos EUA, CA, BR e EU.</p>
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">Servidores Dedicados</h3>
+            <p class="text-gray-600 mb-4">Bare Metal nos EUA, Canadá, Brasil e Europa.</p>
+            <span class="text-purple-600 font-medium">Saiba Mais <i class="fas fa-arrow-right ml-2"></i></span>
           </div>
         </a>
       </div>
     </div>
   </section>
 
+  <!-- Testimonials Section -->
+  <section class="py-24 bg-gray-100">
+    <div class="container mx-auto px-6">
+      <h2 class="text-4xl md:text-5xl font-bold text-center text-gray-800 mb-16 animate-fade-in">O que Nossos Clientes Dizem</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="testimonial-card animate-fade-in">
+          <p class="text-gray-600 mb-4">"A Fourward transformou meu servidor MTA com uma performance incrível!"</p>
+          <p class="text-gray-800 font-semibold">João Silva</p>
+          <p class="text-gray-500 text-sm">Proprietário, Servidor MTA</p>
+        </div>
+        <div class="testimonial-card animate-fade-in" style="animation-delay: 0.2s;">
+          <p class="text-gray-600 mb-4">"Suporte 24/7 excepcional e servidores VPS super rápidos!"</p>
+          <p class="text-gray-800 font-semibold">Maria Oliveira</p>
+          <p class="text-gray-500 text-sm">Desenvolvedora</p>
+        </div>
+        <div class="testimonial-card animate-fade-in" style="animation-delay: 0.4s;">
+          <p class="text-gray-600 mb-4">"Minecraft nunca foi tão fluido. Recomendo a Fourward!"</p>
+          <p class="text-gray-800 font-semibold">Pedro Santos</p>
+          <p class="text-gray-500 text-sm">Gamer</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Contact Section -->
-  <section id="contact" class="py-20 bg-white">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="text-4xl font-bold text-gray-800 mb-8">Entre em Contato</h2>
-      <p class="text-lg text-gray-600 mb-8">Dúvidas ou precisa de um plano personalizado? Fale conosco!</p>
-      <a href="mailto:contato@fourwardhosting.com" class="btn-primary py-3 px-8 rounded-lg text-lg">Enviar E-mail</a>
+  <section id="contact" class="py-24 bg-gray-50">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-8 animate-fade-in">Entre em Contato</h2>
+      <p class="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">Precisa de um plano personalizado ou tem dúvidas? Nossa equipe está pronta para ajudar!</p>
+      <a href="mailto:contato@fourwardhosting.com" class="btn-primary text-xl">Enviar E-mail</a>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-purple-800 text-white py-8">
-    <div class="container mx-auto px-4 text-center">
-      <p class="mb-2">© 2025 Fourward Hosting. Todos os direitos reservados.</p>
-      <p><a href="https://被迫四处游荡的苦难之主fourward-hosting.pages.dev" class="underline hover:text-light-blue">fourward-hosting.pages.dev</a></p>
+  <footer class="bg-purple-800 text-white py-16">
+    <div class="container mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div>
+          <img src="https://i.imgur.com/RiuNbm9.png" alt="Fourward Hosting Logo" class="h-16 w-16 mb-4">
+          <p class="text-gray-300">Fourward Hosting - Soluções de hospedagem de alta performance para jogos e servidores.</p>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Produtos</h3>
+          <ul class="space-y-2">
+            <li><a href="mta.html" class="footer-link">MTA Hosting</a></li>
+            <li><a href="minecraft.html" class="footer-link">Minecraft Hosting</a></li>
+            <li><a href="ryzen9.html" class="footer-link">VPS Ryzen9 BR</a></li>
+            <li><a href="dedicated.html" class="footer-link">Servidores Dedicados</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Links Úteis</h3>
+          <ul class="space-y-2">
+            <li><a href="terms.html" class="footer-link">Termos de Serviço</a></li>
+            <li><a href="#contact" class="footer-link">Suporte</a></li>
+            <li><a href="#products" class="footer-link">Nossos Planos</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Siga-nos</h3>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-300 hover:text-light-blue"><i class="fab fa-twitter fa-lg"></i></a>
+            <a href="#" class="text-gray-300 hover:text-light-blue"><i class="fab fa-discord fa-lg"></i></a>
+            <a href="#" class="text-gray-300 hover:text-light-blue"><i class="fab fa-telegram fa-lg"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="mt-12 text-center">
+        <p>© 2025 Fourward Hosting. Todos os direitos reservados.</p>
+        <p><a href="https://fourward-hosting.pages.dev" class="footer-link">fourward-hosting.pages.dev</a></p>
+      </div>
     </div>
   </footer>
 
@@ -182,16 +385,14 @@
     // Smooth scroll for navigation
     document.querySelectorAll('.nav-link').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
-        e.preventDefault();
         const href = this.getAttribute('href');
         if (href.includes('#')) {
+          e.preventDefault();
           const targetId = href.substring(1);
           const targetElement = document.getElementById(targetId);
           if (targetElement) {
             targetElement.scrollIntoView({ behavior: 'smooth' });
           }
-        } else {
-          window.location.href = href;
         }
       });
     });
