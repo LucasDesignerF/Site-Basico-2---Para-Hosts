@@ -3,7 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro - CloudHost</title>
+    <title>Registro - Fourward Hosting</title>
+    <meta name="description" content="Registre-se na Fourward Hosting e acesse VPS, servidores dedicados e hospedagem em nuvem com suporte 24/7. Crie sua conta agora!">
+    <meta name="keywords" content="registro hospedagem, criar conta, Fourward Hosting, Rede Gamer, VPS, servidores dedicados, hospedagem em nuvem, suporte 24/7">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Rede Gamer - Serviços Dedicados">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Registro - Fourward Hosting">
+    <meta property="og:description" content="Crie sua conta na Fourward Hosting e aproveite VPS, servidores dedicados e hospedagem em nuvem com suporte 24/7. Registre-se agora!">
+    <meta property="og:image" content="https://imgur.com/Er5luM7.png">
+    <meta property="og:url" content="https://fourward-hosting.pages.dev/register.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Fourward Hosting">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Registro - Fourward Hosting">
+    <meta name="twitter:description" content="Crie sua conta na Fourward Hosting e aproveite VPS, servidores dedicados e hospedagem em nuvem com suporte 24/7.">
+    <meta name="twitter:image" content="https://imgur.com/Er5luM7.png">
+    <!-- Canonical -->
+    <link rel="canonical" href="https://fourward-hosting.pages.dev/register.html">
+    <link rel="icon" href="https://imgur.com/fClKH8j.png">
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Organization",
+                "name": "Fourward Hosting",
+                "url": "https://fourward-hosting.pages.dev/",
+                "logo": "https://imgur.com/cp5jp7x.png",
+                "description": "Fourward Hosting, uma marca da Rede Gamer, oferece hospedagem VPS, servidores dedicados e nuvem com suporte 24/7.",
+                "sameAs": []
+            },
+            {
+                "@type": "WebPage",
+                "name": "Registro - Fourward Hosting",
+                "url": "https://fourward-hosting.pages.dev/register.html",
+                "description": "Página de registro para criar uma conta na Fourward Hosting e acessar soluções de hospedagem VPS, servidores dedicados e nuvem.",
+                "isPartOf": {
+                    "@type": "WebSite",
+                    "name": "Fourward Hosting",
+                    "url": "https://fourward-hosting.pages.dev/"
+                }
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Home",
+                        "item": "https://fourward-hosting.pages.dev/"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "Registro",
+                        "item": "https://fourward-hosting.pages.dev/register.html"
+                    }
+                ]
+            }
+        ]
+    }
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script>
@@ -11,9 +74,13 @@
             theme: {
                 extend: {
                     colors: {
-                        'cloud': { 900: '#1E3A8A', 600: '#3B82F6', 100: '#DBEAFE' },
+                        'cloud': { 
+                            900: '#1E0D2D', // RGB 30,13,45
+                            600: '#69D4E6', // Gradient start RGB 105,212,230
+                            100: '#0280BF'  // Gradient end RGB 2,130,191
+                        },
                         'neutral': { 900: '#1F2A44', 100: '#F3F4F6' },
-                        'accent': { 500: '#10B981', 600: '#059669' },
+                        'accent': { 500: '#E91748', 600: '#B3123A' }, // Detail RGB 233,23,72
                     },
                     fontFamily: { sans: ['Inter', 'sans-serif'] },
                 },
@@ -31,8 +98,8 @@
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
             <div class="flex items-center">
                 <a href="index.html" class="flex items-center space-x-2">
-                    <i class="fas fa-cloud text-cloud-600 text-2xl"></i>
-                    <span class="text-xl font-bold text-cloud-900">CloudHost</span>
+                    <img src="https://imgur.com/cp5jp7x.png" alt="Fourward Hosting Logo" class="h-8 w-8">
+                    <span class="text-xl font-bold text-cloud-900">Fourward Hosting</span>
                 </a>
             </div>
             <div class="hidden md:flex space-x-8">
@@ -77,6 +144,40 @@
             <p id="message" class="mt-4 text-center text-sm text-red-500 hidden"></p>
         </div>
     </main>
+    <footer class="bg-cloud-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Fourward Hosting</h3>
+                    <p>Soluções de hospedagem confiáveis.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Produtos</h3>
+                    <ul class="space-y-2">
+                        <li><a href="products.html" class="hover:text-cloud-600">Explorar Produtos</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Suporte</h3>
+                    <ul class="space-y-2">
+                        <li><a href="support.html" class="hover:text-cloud-600">Central de Ajuda</a></li>
+                        <li><a href="support.html" class="hover:text-cloud-600">Tickets</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Conta</h3>
+                    <ul class="space-y-2">
+                        <li><a href="login.html" class="hover:text-cloud-600">Login</a></li>
+                        <li><a href="register.html" class="hover:text-cloud-600">Registrar</a></li>
+                        <li><a href="dashboard_client.html" class="hover:text-cloud-600">Painel</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 text-center">
+                <p>A Fourward Hosting©, é uma marca comercial da Rede Gamer© - Serviços Dedicados, e sua cópia ou uso indevido, poderão acarretar em processos judiciais e legais. Rede Gamer© - Since 2019 a 2025.</p>
+            </div>
+        </div>
+    </footer>
     <script>
         const API_URL = 'https://vendas-v2.discloud.app/';
         const API_KEY = '3464d2f5-c1c0-47a8-853d-2caff90cc48a';
