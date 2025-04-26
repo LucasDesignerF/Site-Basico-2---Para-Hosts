@@ -1,218 +1,174 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fourward Hosting - O Avanço em Hospedagens</title>
-    <meta name="description" content="Fourward Hosting oferece soluções de hospedagem poderosas: VPS, servidores dedicados e hospedagem em nuvem com desempenho superior e suporte 24/7. Comece agora!">
-    <meta name="keywords" content="hospedagem, VPS, servidores dedicados, hospedagem em nuvem, suporte 24/7, Fourward Hosting, Rede Gamer">
-    <meta name="robots" content="index, follow">
-    <meta name="author" content="Rede Gamer - Serviços Dedicados">
-    <!-- Open Graph -->
-    <meta property="og:title" content="Fourward Hosting - O Avanço em Hospedagens">
-    <meta property="og:description" content="Hospedagem confiável com VPS, servidores dedicados e nuvem. Desempenho imbatível e suporte 24/7. Conheça a Fourward Hosting!">
-    <meta property="og:image" content="https://imgur.com/Er5luM7.png">
-    <meta property="og:url" content="https://fourward-hosting.pages.dev/">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Fourward Hosting">
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Fourward Hosting - O Avanço em Hospedagens">
-    <meta name="twitter:description" content="Hospedagem confiável com VPS, servidores dedicados e nuvem. Desempenho imbatível e suporte 24/7.">
-    <meta name="twitter:image" content="https://imgur.com/Er5luM7.png">
-    <!-- Canonical -->
-    <link rel="canonical" href="https://fourward-hosting.pages.dev/">
-    <link rel="icon" href="https://imgur.com/fClKH8j.png">
-    <!-- Schema.org JSON-LD -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@graph": [
-            {
-                "@type": "Organization",
-                "name": "Fourward Hosting",
-                "url": "https://fourward-hosting.pages.dev/",
-                "logo": "https://imgur.com/cp5jp7x.png",
-                "description": "Fourward Hosting, uma marca da Rede Gamer, oferece hospedagem VPS, servidores dedicados e nuvem com suporte 24/7.",
-                "sameAs": []
-            },
-            {
-                "@type": "WebSite",
-                "name": "Fourward Hosting",
-                "url": "https://fourward-hosting.pages.dev/",
-                "potentialAction": {
-                    "@type": "SearchAction",
-                    "target": "https://fourward-hosting.pages.dev/search?q={search_term_string}",
-                    "query-input": "required name=search_term_string"
-                }
-            },
-            {
-                "@type": "BreadcrumbList",
-                "itemListElement": [
-                    {
-                        "@type": "ListItem",
-                        "position": 1,
-                        "name": "Home",
-                        "item": "https://fourward-hosting.pages.dev/"
-                    }
-                ]
-            }
-        ]
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fourward Hosting - O Avanço em Hospedagens</title>
+  <meta name="description" content="Fourward Hosting oferece hospedagem de alta performance para MTA, SA-MP, Minecraft, VPS Ryzen e Xeon no Brasil, além de servidores dedicados Bare Metal nos EUA, Canadá, Brasil e Europa.">
+  <meta name="keywords" content="hospedagem, VPS, servidores dedicados, MTA, SA-MP, Minecraft, Ryzen, Xeon, Brasil, EUA, Canadá, Europa">
+  <meta name="author" content="Fourward Hosting">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Fourward Hosting - O Avanço em Hospedagens">
+  <meta property="og:description" content="Hospedagem de alta performance para jogos e servidores VPS no Brasil e no mundo. Conheça nossos planos!">
+  <meta property="og:image" content="https://i.imgur.com/Xr7Y2S3.png">
+  <meta property="og:url" content="https://fourward-hosting.pages.dev">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Fourward Hosting - O Avanço em Hospedagens">
+  <meta name="twitter:description" content="Hospedagem de alta performance para jogos e servidores VPS no Brasil e no mundo.">
+  <meta name="twitter:image" content="https://i.imgur.com/Xr7Y2S3.png">
+  <link rel="icon" href="https://i.imgur.com/RiuNbm9.png" type="image/png">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --purple-primary: #6b21a8;
+      --purple-dark: #4c1d95;
+      --light-blue: #38bdf8;
+      --reddish-purple: #c026d3;
     }
-    </script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'cloud': { 
-                            900: '#1E0D2D', // RGB 30,13,45
-                            600: '#69D4E6', // Gradient start RGB 105,212,230
-                            100: '#0280BF'  // Gradient end RGB 2,130,191
-                        },
-                        'neutral': { 900: '#1F2A44', 100: '#F3F4F6' },
-                        'accent': { 500: '#E91748', 600: '#B3123A' }, // Detail RGB 233,23,72
-                    },
-                    fontFamily: { sans: ['Inter', 'sans-serif'] },
-                },
-            },
-        };
-    </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        .hover-scale:hover { transform: scale(1.05); transition: transform 0.3s ease; }
-        .gradient-bg { background: linear-gradient(135deg, #69D4E6 0%, #0280BF 100%); }
-        .scroll-smooth { scroll-behavior: smooth; }
-    </style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f9fafb;
+    }
+    .nav-link {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    .nav-link:hover {
+      color: var(--light-blue);
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -2px;
+      left: 0;
+      background-color: var(--light-blue);
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    .card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    .btn-primary {
+      background-color: var(--purple-primary);
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+    .btn-primary:hover {
+      background-color: var(--purple-dark);
+    }
+    .hero-bg {
+      background: linear-gradient(to bottom, rgba(107, 33, 168, 0.8), rgba(76, 29, 149, 0.8)), url('https://zeittec.com.br/wp-content/uploads/2020/03/construcao-de-data-center-seguros.jpg') no-repeat center/cover;
+    }
+  </style>
 </head>
-<body class="bg-neutral-100 text-neutral-900 font-sans antialiased scroll-smooth">
-    <header class="bg-white shadow-sm fixed top-0 left-0 w-full z-50">
-        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-            <div class="flex items-center">
-                <a href="index.html" class="flex items-center space-x-2">
-                    <img src="https://imgur.com/cp5jp7x.png" alt="Fourward Hosting Logo" class="h-8 w-8">
-                    <span class="text-xl font-bold text-cloud-900">Fourward Hosting</span>
-                </a>
-            </div>
-            <div class="hidden md:flex space-x-8">
-                <a href="products.html" class="text-neutral-900 hover:text-cloud-600 transition-colors">Produtos</a>
-                <a href="#features" class="text-neutral-900 hover:text-cloud-600 transition-colors">Recursos</a>
-                <a href="#testimonials" class="text-neutral-900 hover:text-cloud-600 transition-colors">Depoimentos</a>
-                <a href="support.html" class="text-neutral-900 hover:text-cloud-600 transition-colors">Suporte</a>
-            </div>
-            <div class="flex items-center space-x-4">
-                <a href="login.html" class="text-neutral-900 hover:text-cloud-600 transition-colors">Login</a>
-                <a href="register.html" class="bg-accent-500 text-white px-4 py-2 rounded-lg hover:bg-accent-600 transition-colors">Começar Agora</a>
-            </div>
-        </nav>
-    </header>
-    <main class="pt-20">
-        <section class="gradient-bg text-white py-20">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h1 class="text-4xl md:text-5xl font-bold mb-6">Hospedagem Poderosa para Seu Negócio</h1>
-                <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">Escolha entre VPS, servidores dedicados e hospedagem em nuvem com desempenho imbatível e suporte 24/7.</p>
-                <div class="flex justify-center space-x-4">
-                    <a href="products.html" class="bg-accent-500 text-white px-6 py-3 rounded-lg hover:bg-accent-600 hover-scale transition-colors">Explorar Planos</a>
-                    <a href="register.html" class="bg-white text-cloud-900 px-6 py-3 rounded-lg hover:bg-neutral-100 hover-scale transition-colors">Criar Conta</a>
-                </div>
-            </div>
-        </section>
-        <section id="features" class="py-20 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl font-bold text-center mb-12">Por que Escolher a Fourward Hosting?</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="bg-neutral-100 p-6 rounded-lg shadow-md hover-scale">
-                        <i class="fas fa-server text-cloud-600 text-3xl mb-4"></i>
-                        <h3 class="text-xl font-semibold mb-2">Servidores Dedicados</h3>
-                        <p class="text-neutral-900">Hardware de ponta com configuração personalizada.</p>
-                    </div>
-                    <div class="bg-neutral-100 p-6 rounded-lg shadow-md hover-scale">
-                        <i class="fas fa-cloud text-cloud-600 text-3xl mb-4"></i>
-                        <h3 class="text-xl font-semibold mb-2">Hospedagem em Nuvem</h3>
-                        <p class="text-neutral-900">Escalabilidade instantânea e alta disponibilidade.</p>
-                    </div>
-                    <div class="bg-neutral-100 p-6 rounded-lg shadow-md hover-scale">
-                        <i class="fas fa-headset text-cloud-600 text-3xl mb-4"></i>
-                        <h3 class="text-xl font-semibold mb-2">Suporte 24/7</h3>
-                        <p class="text-neutral-900">Equipe pronta para ajudar a qualquer hora.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section id="testimonials" class="py-20 bg-neutral-900 text-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl font-bold text-center mb-12">O que Nossos Clientes Dizem</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="bg-neutral-100 text-neutral-900 p-6 rounded-lg shadow-md">
-                        <p class="mb-4">"A Fourward Hosting transformou nossa infraestrutura!"</p>
-                        <p class="font-semibold">Ana Silva, CTO</p>
-                    </div>
-                    <div class="bg-neutral-100 text-neutral-900 p-6 rounded-lg shadow-md">
-                        <p class="mb-4">"Escalabilidade sem preocupações."</p>
-                        <p class="font-semibold">João Mendes, CEO</p>
-                    </div>
-                    <div class="bg-neutral-100 text-neutral-900 p-6 rounded-lg shadow-md">
-                        <p class="mb-4">"Serviço confiável e acessível!"</p>
-                        <p class="font-semibold">Mariana Costa, Desenvolvedora</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-    <footer class="bg-cloud-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Fourward Hosting</h3>
-                    <p>Soluções de hospedagem confiáveis.</p>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Produtos</h3>
-                    <ul class="space-y-2">
-                        <li><a href="products.html" class="hover:text-cloud-600">Explorar Produtos</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Suporte</h3>
-                    <ul class="space-y-2">
-                        <li><a href="support.html" class="hover:text-cloud-600">Central de Ajuda</a></li>
-                        <li><a href="support.html" class="hover:text-cloud-600">Tickets</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Conta</h3>
-                    <ul class="space-y-2">
-                        <li><a href="login.html" class="hover:text-cloud-600">Login</a></li>
-                        <li><a href="register.html" class="hover:text-cloud-600">Registrar</a></li>
-                        <li><a href="dashboard_client.html" class="hover:text-cloud-600">Painel</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="mt-8 text-center">
-                <p>A Fourward Hosting©, é uma marca comercial da Rede Gamer© - Serviços Dedicados, e sua cópia ou uso indevido, poderão acarretar em processos judiciais e legais. Rede Gamer© - Since 2019 a 2025.</p>
-            </div>
-        </div>
-    </footer>
-    <script>
-        const API_URL = 'https://vendas-v2.discloud.app/';
-        const API_KEY = '3464d2f5-c1c0-47a8-853d-2caff90cc48a';
-        async function checkAuth() {
-            const token = localStorage.getItem('token');
-            if (token) {
-                try {
-                    const response = await fetch(`${API_URL}/orders`, {
-                        headers: { 'Authorization': `Bearer ${token}`, 'X-API-Key': API_KEY }
-                    });
-                    if (!response.ok) throw new Error('Token inválido');
-                } catch (error) {
-                    localStorage.removeItem('token');
-                    console.warn('Token inválido removido');
-                }
-            }
+<body>
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-purple-800 to-purple-600 text-white py-4 sticky top-0 z-50 shadow-lg">
+    <div class="container mx-auto flex justify-between items-center px-4">
+      <div class="flex items-center">
+        <img src="https://i.imgur.com/RiuNbm9.png" alt="Fourward Hosting Logo" class="h-12 w-12 mr-3">
+        <h1 class="text-2xl font-bold">Fourward Hosting</h1>
+      </div>
+      <nav>
+        <ul class="flex space-x-6">
+          <li><a href="#home" class="nav-link">Início</a></li>
+          <li><a href="#products" class="nav-link">Produtos</a></li>
+          <li><a href="#contact" class="nav-link">Contato</a></li>
+          <li><a href="terms.html" class="nav-link">Termos</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero-bg py-32 text-white text-center">
+    <div class="container mx-auto px-4">
+      <h2 class="text-5xl font-bold mb-4">Fourward Hosting - O Avanço em Hospedagens</h2>
+      <p class="text-xl mb-8">Hospedagem de alta performance para jogos e servidores VPS no Brasil e no mundo.</p>
+      <a href="#products" class="btn-primary py-3 px-8 rounded-lg text-lg">Conheça Nossos Planos</a>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section id="products" class="py-20 bg-gray-100">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">Nossos Produtos</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <a href="mta.html" class="card bg-white rounded-lg shadow-lg p-6 text-center">
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">MTA Hosting</h3>
+          <p class="text-gray-600">Servidores otimizados para Multi Theft Auto.</p>
+        </a>
+        <a href="sa-mp.html" class="card bg-white rounded-lg shadow-lg p-6 text-center">
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">SA-MP Hosting</h3>
+          <p class="text-gray-600">Hospedagem para San Andreas Multiplayer.</p>
+        </a>
+        <a href="minecraft.html" class="card bg-white rounded-lg shadow-lg p-6 text-center">
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Minecraft Hosting</h3>
+          <p class="text-gray-600">Servidores para Minecraft com mods e plugins.</p>
+        </a>
+        <a href="ryzen9.html" class="card bg-white rounded-lg shadow-lg p-6 text-center">
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">VPS Ryzen9 BR</h3>
+          <p class="text-gray-600">VPS de alta performance no Brasil.</p>
+        </a>
+        <a href="ryzen7.html" class="card bg-white rounded-lg shadow-lg p-6 text-center">
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">VPS Ryzen7 BR</h3>
+          <p class="text-gray-600">VPS confiáveis com Ryzen 7 no Brasil.</p>
+        </a>
+        <a href="xeon.html" class="card bg-white rounded-lg shadow-lg p-6 text-center">
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">VPS Xeon 2660v2 BR</h3>
+          <p class="text-gray-600">VPS para workloads intensos no Brasil.</p>
+        </a>
+        <a href="dedicated.html" class="card bg-white rounded-lg shadow-lg p-6 text-center">
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Servidores Dedicados</h3>
+          <p class="text-gray-600">Bare Metal nos EUA, CA, BR e EU.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 bg-white">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-4xl font-bold text-gray-800 mb-8">Entre em Contato</h2>
+      <p class="text-lg text-gray-600 mb-8">Dúvidas ou precisa de um plano personalizado? Fale conosco!</p>
+      <a href="mailto:contato@fourwardhosting.com" class="btn-primary py-3 px-8 rounded-lg text-lg">Enviar E-mail</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-purple-800 text-white py-8">
+    <div class="container mx-auto px-4 text-center">
+      <p class="mb-2">© 2025 Fourward Hosting. Todos os direitos reservados.</p>
+      <p><a href="https://fourward-hosting.pages.dev" class="underline hover:text-light-blue">fourward-hosting.pages.dev</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scroll for navigation
+    document.querySelectorAll('.nav-link').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const href = this.getAttribute('href');
+        if (href.includes('#')) {
+          const targetId = href.substring(1);
+          const targetElement = document.getElementById(targetId);
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+          }
+        } else {
+          window.location.href = href;
         }
-        window.addEventListener('load', checkAuth);
-    </script>
+      });
+    });
+  </script>
 </body>
 </html>
