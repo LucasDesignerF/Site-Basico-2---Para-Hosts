@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel do Admin - CloudHost</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'cloud': { 900: '#1E3A8A', 600: '#3B82F6', 100: '#DBEAFE' },
+                        'neutral': { 900: '#1F2A44', 100: '#F3F4F6' },
+                        'accent': { 500: '#10B981', 600: '#059669' },
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                },
+            },
+        };
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hover-scale:hover { transform: scale(1.05); transition: transform 0.3s ease; }
+        .scroll-smooth { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="bg-neutral-100 text-neutral-900 font-sans antialiased scroll-smooth">
+    <header class="bg-white shadow-sm fixed top-0 left-0 w-full z-50">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+            <div class="flex items-center">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <i class="fas fa-cloud text-cloud-600 text-2xl"></i>
+                    <span class="text-xl font-bold text-cloud-900">CloudHost</span>
+                </a>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="products.html" class="text-neutral-900 hover:text-cloud-600 transition-colors">Produtos</a>
+                <a href="index.html#features" class="text-neutral-900 hover:text-cloud-600 transition-colors">Recursos</a>
+                <a href="index.html#testimonials" class="text-neutral-900 hover:text-cloud-600 transition-colors">Depoimentos</a>
+                <a href="support.html" class="text-neutral-900 hover:text-cloud-600 transition-colors">Suporte</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="dashboard_admin.html" class="text-cloud-600 font-semibold">Painel Admin</a>
+                <button id="logout" class="text-neutral-900 hover:text-cloud-600">Sair</button>
+            </div>
+        </nav>
+    </header>
+    <main class="pt-20 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-3xl font-bold mb-8">Painel do Admin</h1>
+            <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+                <h2 class="text-xl font-semibold mb-4">API Key</h2>
+                <p id="api-key-status">Carregando status...</p>
+                <button id="renew-api-key" class="mt-4 bg-accent-500 text-white px-4 py-2 rounded-lg hover:bg-accent-600 hover-scale">Renovar API Key</button>
+                <div id="pix-qr" class="mt-4 hidden">
+                    <p>Escaneie o QR code para renovar (R$2,99):</p>
+                    <p id="pix-payload"></p>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h2 class="text-xl font-semibold mb-4">Gerenciar Categorias</h2>
+                    <div class="mb-4">
+                        <input type="text" id="category-name" class="w-full p-3 border rounded-lg" placeholder="Nome da categoria">
+                        <input type="text" id="category-image" class="w-full p-3 border rounded-lg mt-2" placeholder="URL da imagem (opcional)">
+                        <button id="add-category" class="mt-2 bg-accent-500 text-white px-4 py-2 rounded-lg hover:bg-accent-600 hover-scale">Adicionar</button>
+                    </div>
+                    <div id="categories-list"></div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h2 class="text-xl font-semibold mb-4">Gerenciar Produtos</h2>
+                    <div class="mb-4">
+                        <input type="text" id="product-name" class="w-full p-3 border rounded-lg" placeholder="Nome do produto">
+                        <input type="number" id="product-price" class="w-full p-3 border rounded-lg mt-2" placeholder="Preço" step="0.01">
+                        <select id="product-category" class="w-full p-3 border rounded-lg mt-2"></select>
+                        <textarea id="product-description" class="w-full p-3 border rounded-lg mt-2" placeholder="Descrição"></textarea>
+                        <input type="number" id="product-stock" class="w-full p-3 border rounded-lg mt-2" placeholder="Estoque">
+                        <input type="text" id="product-images" class="w-full p-3 border rounded-lg mt-2" placeholder="URL da imagem">
+                        <select id="product-card-style" class="w-full p-3 border rounded-lg mt-2">
+                            <option value="hosting">Hosting</option>
+                            <option value="digital">Digital</option>
+                            <option value="physical">Físico</option>
+                        </select>
+                        <button id="add-product" class="mt-2 bg-accent-500 text-white px-4 py-2 rounded-lg hover:bg-accent-600 hover-scale">Adicionar</button>
+                    </div>
+                    <div id="products-list"></div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h2 class="text-xl font-semibold mb-4">Vendas</h2>
+                    <div id="sales-list"></div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h2 class="text-xl font-semibold mb-4">Tickets de Suporte</h2>
+                    <div id="admin-tickets-list"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        const API_URL = 'https://vendas-v2.discloud.app/';
+        const API_KEY = '3464d2f5-c1c0-47a8-853d-2caff90cc48a';
+        async function loadApiKeyStatus() {
+            try {
+                const token = localStorage.getItem('token');
+                const response = await fetch(`${API_URL}/admin/renew-api-key`, {
+                    method: 'POST',
+                    headers: { 'Authorization': `Bearer ${token}`, 'X-API-Key': API_KEY, 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ api_key: API_KEY })
+                });
+                const data = await response.json();
+                if (!response.ok) throw new Error(data.detail || 'Erro ao carregar status');
+                const expiresAt = new Date(data.new_expires_at);
+                const daysLeft = Math.ceil((expiresAt - new Date()) / (1000 * 60 * 60 * 24));
+                document.getElementById('api-key-status').textContent = `API Key válida por ${daysLeft} dias.`;
+            } catch (error) {
+                document.getElementById('api-key-status').textContent = `Erro: ${error.message}`;
+            }
+        }
+        async function renewApiKey() {
+            try {
+                const response = await fetch(`${API_URL}/generate-pix-payment`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'X-API-Key': API_KEY },
+                    body: JSON.stringify({ email: 'admin@cloudhost.com', platform_name: 'CloudHost' })
+                });
+                const data = await response.json();
+                if (!response.ok) throw new Error(data.detail || 'Erro ao gerar PIX');
+                document.getElementById('pix-payload').textContent = data.pix_payload;
+                document.getElementById('pix-qr').classList.remove('hidden');
+            } catch (error) {
+                console.error('Erro ao renovar API Key:', error);
+            }
+        }
+        async function loadCategories() {
+            try {
+                const response = await fetch(`${API_URL}/categories`, { headers: { 'X-API-Key': API_KEY } });
+                const categories = await response.json();
+                const list = document.getElementById('categories-list');
+                const select = document.getElementById('product-category');
+                select.innerHTML = '<option value="">Selecione uma categoria</option>';
+                list.innerHTML = categories.length ? categories.map(c => `
+                    <div class="mb-4">
+                        <p><strong>${c.name}</strong></p>
+                        <p>Imagem: ${c.image_url || 'Nenhuma'}</p>
+                    </div>
+                `).join('') : '<p>Nenhuma categoria encontrada.</p>';
+                categories.forEach(c => {
+                    const option = document.createElement('option');
+                    option.value = c.id;
+                    option.textContent = c.name;
+                    select.appendChild(option);
+                });
+            } catch (error) {
+                console.error('Erro ao carregar categorias:', error);
+            }
+        }
+        async function loadProducts() {
+            try {
+                const response = await fetch(`${API_URL}/products`, { headers: { 'X-API-Key': API_KEY } });
+                const products = await response.json();
+                const list = document.getElementById('products-list');
+                list.innerHTML = products.length ? products.map(p => `
+                    <div class="mb-4">
+                        <p><strong>${p.name}</strong></p>
+                        <p>Preço: R$${p.price.toFixed(2)}</p>
+                        <p>Estilo: ${p.card_style}</p>
+                    </div>
+                `).join('') : '<p>Nenhum produto encontrado.</p>';
+            } catch (error) {
+                console.error('Erro ao carregar produtos:', error);
+            }
+        }
+        async function loadSales() {
+            try {
+                const token = localStorage.getItem('token');
+                const response = await fetch(`${API_URL}/sales`, {
+                    headers: { 'Authorization': `Bearer ${token}`, 'X-API-Key': API_KEY }
+                });
+                const sales = await response.json();
+                const list = document.getElementById('sales-list');
+                list.innerHTML = sales.length ? sales.map(s => `
+                    <div class="mb-4">
+                        <p><strong>Venda #${s.id}</strong></p>
+                        <p>Total: R$${s.total.toFixed(2)}</p>
+                        <p>Status: ${s.status}</p>
+                    </div>
+                `).join('') : '<p>Nenhuma venda encontrada.</p>';
+            } catch (error) {
+                console.error('Erro ao carregar vendas:', error);
+            }
+        }
+        async function loadTickets() {
+            try {
+                const token = localStorage.getItem('token');
+                const response = await fetch(`${API_URL}/support-tickets`, {
+                    headers: { 'Authorization': `Bearer ${token}`, 'X-API-Key': API_KEY }
+                });
+                const tickets = await response.json();
+                const list = document.getElementById('admin-tickets-list');
+                list.innerHTML = tickets.length ? tickets.map(t => `
+                    <div class="mb-4">
+                        <p><strong>Ticket #${t.id}</strong></p>
+                        <p>Assunto: ${t.subject}</p>
+                        <p>Status: ${t.status}</p>
+                    </div>
+                `).join('') : '<p>Nenhum ticket encontrado.</p>';
+            } catch (error) {
+                console.error('Erro ao carregar tickets:', error);
+            }
+        }
+        document.getElementById('add-category').addEventListener('click', async () => {
+            const name = document.getElementById('category-name').value;
+            const image = document.getElementById('category-image').value;
+            if (!name) return alert('Nome da categoria é obrigatório.');
+            try {
+                const token = localStorage.getItem('token');
+                const response = await fetch(`${API_URL}/categories`, {
+                    method: 'POST',
+                    headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json', 'X-API-Key': API_KEY },
+                    body: JSON.stringify({ name, image_url: image })
+                });
+                if (!response.ok) throw new Error((await response.json()).detail || 'Erro ao adicionar categoria');
+                loadCategories();
+                document.getElementById('category-name').value = '';
+                document.getElementById('category-image').value = '';
+            } catch (error) {
+                alert(`Erro: ${error.message}`);
+            }
+        });
+        document.getElementById('add-product').addEventListener('click', async () => {
+            const name = document.getElementById('product-name').value;
+            const price = parseFloat(document.getElementById('product-price').value);
+            const categoryId = document.getElementById('product-category').value;
+            const description = document.getElementById('product-description').value;
+            const stock = parseInt(document.getElementById('product-stock').value);
+            const images = document.getElementById('product-images').value.split(',').map(img => img.trim());
+            const cardStyle = document.getElementById('product-card-style').value;
+            if (!name || !price || !categoryId || !description || !stock) return alert('Preencha todos os campos obrigatórios.');
+            try {
+                const token = localStorage.getItem('token');
+                const response = await fetch(`${API_URL}/products`, {
+                    method: 'POST',
+                    headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json', 'X-API-Key': API_KEY },
+                    body: JSON.stringify({ name, price, category_id: categoryId, description, stock, images, card_style: cardStyle })
+                });
+                if (!response.ok) throw new Error((await response.json()).detail || 'Erro ao adicionar produto');
+                loadProducts();
+                document.getElementById('product-name').value = '';
+                document.getElementById('product-price').value = '';
+                document.getElementById('product-category').value = '';
+                document.getElementById('product-description').value = '';
+                document.getElementById('product-stock').value = '';
+                document.getElementById('product-images').value = '';
+            } catch (error) {
+                alert(`Erro: ${error.message}`);
+            }
+        });
+        document.getElementById('renew-api-key').addEventListener('click', renewApiKey);
+        document.getElementById('logout').addEventListener('click', () => {
+            localStorage.removeItem('token');
+            window.location.href = 'login.html';
+        });
+        window.addEventListener('load', () => {
+            loadApiKeyStatus();
+            loadCategories();
+            loadProducts();
+            loadSales();
+            loadTickets();
+        });
+    </script>
+</body>
+</html>

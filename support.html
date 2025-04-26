@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suporte - CloudHost</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'cloud': { 900: '#1E3A8A', 600: '#3B82F6', 100: '#DBEAFE' },
+                        'neutral': { 900: '#1F2A44', 100: '#F3F4F6' },
+                        'accent': { 500: '#10B981', 600: '#059669' },
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                },
+            },
+        };
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hover-scale:hover { transform: scale(1.05); transition: transform 0.3s ease; }
+        .scroll-smooth { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="bg-neutral-100 text-neutral-900 font-sans antialiased scroll-smooth">
+    <header class="bg-white shadow-sm fixed top-0 left-0 w-full z-50">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+            <div class="flex items-center">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <i class="fas fa-cloud text-cloud-600 text-2xl"></i>
+                    <span class="text-xl font-bold text-cloud-900">CloudHost</span>
+                </a>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="products.html" class="text-neutral-900 hover:text-cloud-600 transition-colors">Produtos</a>
+                <a href="index.html#features" class="text-neutral-900 hover:text-cloud-600 transition-colors">Recursos</a>
+                <a href="index.html#testimonials" class="text-neutral-900 hover:text-cloud-600 transition-colors">Depoimentos</a>
+                <a href="support.html" class="text-cloud-600 font-semibold">Suporte</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="login.html" class="text-neutral-900 hover:text-cloud-600 transition-colors">Login</a>
+                <a href="register.html" class="bg-accent-500 text-white px-4 py-2 rounded-lg hover:bg-accent-600 transition-colors">Começar Agora</a>
+            </div>
+        </nav>
+    </header>
+    <main class="pt-20 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-3xl font-bold mb-8">Suporte</h1>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h2 class="text-xl font-semibold mb-4">Abrir Novo Ticket</h2>
+                    <div class="mb-4">
+                        <input type="text" id="ticket-subject" class="w-full p-3 border rounded-lg" placeholder="Assunto">
+                        <textarea id="ticket-description" class="w-full p-3 border rounded-lg mt-2" placeholder="Descrição"></textarea>
+                        <select id="ticket-priority" class="w-full p-3 border rounded-lg mt-2">
+                            <option value="low">Baixa</option>
+                            <option value="medium" selected>Média</option>
+                            <option value="high">Alta</option>
+                        </select>
+                        <button id="create-ticket" class="mt-2 bg-accent-500 text-white px-4 py-2 rounded-lg hover:bg-accent-600 hover-scale">Enviar</button>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h2 class="text-xl font-semibold mb-4">Meus Tickets</h2>
+                    <div id="tickets-list"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        const API_URL = 'https://vendas-v2.discloud.app/';
+        const API_KEY = '3464d2f5-c1c0-47a8-853d-2caff90cc48a';
+        async function loadTickets() {
+            try {
+                const token = localStorage.getItem('token');
+                const response = await fetch(`${API_URL}/support-tickets`, {
+                    headers: { 'Authorization': `Bearer ${token}`, 'X-API-Key': API_KEY }
+                });
+                const tickets = await response.json();
+                const list = document.getElementById('tickets-list');
+                list.innerHTML = tickets.length ? tickets.map(t => `
+                    <div class="mb-4">
+                        <p><strong>Ticket #${t.id}</strong></p>
+                        <p>Assunto: ${t.subject}</p>
+                        <p>Status: ${t.status}</p>
+                    </div>
+                `).join('') : '<p>Nenhum ticket encontrado.</p>';
+            } catch (error) {
+                console.error('Erro ao carregar tickets:', error);
+            }
+        }
+        document.getElementById('create-ticket').addEventListener('click', async () => {
+            const subject = document.getElementById('ticket-subject').value;
+            const description = document.getElementById('ticket-description').value;
+            const priority = document.getElementById('ticket-priority').value;
+            if (!subject || !description) return alert('Preencha todos os campos.');
+            try {
+                const token = localStorage.getItem('token');
+                const response = await fetch(`${API_URL}/support-tickets`, {
+                    method: 'POST',
+                    headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json', 'X-API-Key': API_KEY },
+                    body: JSON.stringify({ subject, description, priority })
+                });
+                if (!response.ok) throw new Error((await response.json()).detail || 'Erro ao criar ticket');
+                loadTickets();
+                document.getElementById('ticket-subject').value = '';
+                document.getElementById('ticket-description').value = '';
+            } catch (error) {
+                alert(`Erro: ${error.message}`);
+            }
+        });
+        window.addEventListener('load', loadTickets);
+    </script>
+</body>
+</html>
